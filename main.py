@@ -1,7 +1,24 @@
 #Zahlenratespiel
 import random
 
+# menü
+def menue():
+    choice = None
 
+    while choice not in ["1","2","3"]:
+        print("1 : Spieler Erstellen")
+        print("2 : Spielen")
+        print("3 : Beenden")
+
+        choice = input("Wähle eine Option:")
+        print("Du hast gewählt:", choice)
+
+        if choice not in ["1","2","3"]:
+            print("Ungültige Option, bitte erneut zwischen 1,2,3  wählen.")
+
+    return choice
+
+#funktion aufrufen
 #zahl zufällig generieren
 def zahlgenerator():
 
@@ -12,10 +29,7 @@ def zahlgenerator():
     return int(zufallzahl)
 
 
-#funktion aufrufen
-zufallzahl = zahlgenerator()
-
-def abgleich():
+def abgleich(zufallzahl):
     while True:
         print("Bitte geben Sie eine Zahl von 1-21 ein.")
         spielerzahl = int(input("Zahl eingeben:"))          #int: da nur ganze zahlen
@@ -23,7 +37,13 @@ def abgleich():
 
         if spielerzahl == zufallzahl:
             print("richtig score + 1")
-            break
+            weiter = input("Weiter spielen (y/n):")
+
+            if weiter == "y":
+                return
+
+            elif weiter == "n":
+                break
 
         elif spielerzahl < zufallzahl:
             print("Sie sind zu niedrig , die Zahl ist höher")
@@ -31,6 +51,18 @@ def abgleich():
         elif spielerzahl > zufallzahl:
             print("Sie sind zu hoch die Zahl ist niedriger")
 
-abgleich()
+while True:
+    wahl = menue()
 
+    if wahl == "1":
+        print("Spieler erstellen ")
+
+    elif wahl == "2":
+        print("Spielen")
+        zufallzahl = zahlgenerator()
+        abgleich(zufallzahl)
+
+    elif wahl == "3":
+        print("Spiel beendet")
+        break
 
