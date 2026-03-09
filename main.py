@@ -1,5 +1,6 @@
 #Zahlenratespiel
 import random
+spieler = None
 
 # menü
 def menue():
@@ -51,16 +52,28 @@ def abgleich(zufallzahl):
         elif spielerzahl > zufallzahl:
             print("Sie sind zu hoch die Zahl ist niedriger")
 
+def spieler_erstellen():
+    name = input("Wähle eine Namen:")
+    print("Du hast den Namen :",name,"gewählt")
+    return name
+
 while True:
     wahl = menue()
 
     if wahl == "1":
         print("Spieler erstellen ")
+        spieler = spieler_erstellen()
 
     elif wahl == "2":
         print("Spielen")
-        zufallzahl = zahlgenerator()
-        abgleich(zufallzahl)
+
+        if spieler == None:
+            print("Namen erstellen")
+
+        else:
+            print("Spieler:",spieler)
+            zufallzahl = zahlgenerator()
+            abgleich(zufallzahl)
 
     elif wahl == "3":
         print("Spiel beendet")
