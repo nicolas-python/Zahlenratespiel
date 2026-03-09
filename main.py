@@ -9,8 +9,28 @@ def zahlgenerator():
                      "11","12","13","14","15","16","17","18","19","20","21"]
 
     zufallzahl = random.choice(zahlen_liste)
-    print(zufallzahl)
+    return int(zufallzahl)
 
 
 #funktion aufrufen
-zahlgenerator()
+zufallzahl = zahlgenerator()
+
+def abgleich():
+    while True:
+        print("Bitte geben Sie eine Zahl von 1-21 ein.")
+        spielerzahl = int(input("Zahl eingeben:"))          #int: da nur ganze zahlen
+        print("Sie haben sich für", spielerzahl, "entschieden.")
+
+        if spielerzahl == zufallzahl:
+            print("richtig score + 1")
+            break
+
+        elif spielerzahl < zufallzahl:
+            print("Sie sind zu niedrig , die Zahl ist höher")
+
+        elif spielerzahl > zufallzahl:
+            print("Sie sind zu hoch die Zahl ist niedriger")
+
+abgleich()
+
+
