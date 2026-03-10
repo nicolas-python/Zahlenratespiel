@@ -26,13 +26,14 @@ def menue():
     while choice not in ["1", "2", "3"]:
         print("1 : Spieler Erstellen")
         print("2 : Spielen")
-        print("3 : Beenden")
+        print("3 : score anzeigen")
+        print("4 : Beenden")
 
         choice = input("Wähle eine Option:")
         print("Du hast gewählt:", choice)
 
-        if choice not in ["1", "2", "3"]:
-            print("Ungültige Option, bitte erneut zwischen 1,2,3  wählen.")
+        if choice not in ["1", "2", "3","4"]:
+            print("Ungültige Option, bitte erneut zwischen 1,2,3,4  wählen.")
 
     return choice
 
@@ -90,6 +91,14 @@ def spieler_erstellen():
     score = 0
     return name
 
+def score_anzeigen():
+
+    if len(speichern) == 0:
+        print("Kein Score vorhanden")
+
+    else:
+        for scores in speichern:
+            print(scores)
 
 load_speichern()
 
@@ -112,6 +121,9 @@ while True:
             abgleich(zufallzahl)
 
     elif wahl == "3":
+        score_anzeigen()
+
+    elif wahl == "4":
         print("Spiel beendet")
         save_speichern()
         break
