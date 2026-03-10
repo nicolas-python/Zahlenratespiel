@@ -23,7 +23,7 @@ def save_speichern():
 def menue():
     choice = None
 
-    while choice not in ["1", "2", "3"]:
+    while choice not in ["1", "2", "3","4"]:
         print("1 : Spieler Erstellen")
         print("2 : Spielen")
         print("3 : score anzeigen")
@@ -68,6 +68,7 @@ def abgleich(zufallzahl):
 
         if spielerzahl == zufallzahl:
             score += 1
+            speichern.append(spieler + " = " + str(score) + "\n")
             print("richtig score :", score)
             weiter = input("Weiter spielen (y/n):")
 
