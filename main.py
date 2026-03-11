@@ -12,6 +12,7 @@ def load_speichern():
         for save in file:
             speichern.append(save)
 
+    return speichern
 
 def save_speichern():
     with open("speichern.txt", "w") as file:
@@ -23,7 +24,8 @@ def save_speichern():
 def menue():
     choice = None
 
-    while choice not in ["1", "2", "3","4"]:
+    while choice not in ["0","1", "2", "3","4"]:
+        print("0 : Benutzer wählen")
         print("1 : Spieler Erstellen")
         print("2 : Spielen")
         print("3 : score anzeigen")
@@ -32,8 +34,8 @@ def menue():
         choice = input("Wähle eine Option:")
         print("Du hast gewählt:", choice)
 
-        if choice not in ["1", "2", "3","4"]:
-            print("Ungültige Option, bitte erneut zwischen 1,2,3,4  wählen.")
+        if choice not in ["0","1", "2", "3","4"]:
+            print("Ungültige Option, bitte erneut zwischen 0,1,2,3,4  wählen.")
 
     return choice
 
@@ -101,12 +103,46 @@ def score_anzeigen():
         for scores in speichern:
             print(scores)
 
+def benutzer_auswaehlen():
+
+    print("Wähle einen Benutzer")
+    lines = load_speichern()
+    score_liste = umwandeln_txt(lines)
+
+    for user in score_liste:
+        print(user)
+    benutzer = input("Welchen Benutzer ?")
+    print("Du hast den Spieler:",benutzer, "gewählt")
+
+    return benutzer
+
+def umwandeln_txt(lines):
+    speichern = {}
+    for line in lines:
+        line = line.strip()
+
+        try:
+            if line =="":
+                continue
+
+            spieler, score = line.split("=")
+            speichern[spieler] = int(score)
+
+        except ValueError:
+            continue
+
+    return speichern
+
 load_speichern()
 
 while True:
     wahl = menue()
 
-    if wahl == "1":
+    if wahl == "0":
+        print("Benutzer auswählen")
+        spieler = benutzer_auswaehlen()
+
+    elif wahl == "1":
         print("Spieler erstellen ")
         spieler = spieler_erstellen()
 
