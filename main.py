@@ -73,6 +73,7 @@ def abgleich(zufallzahl):
             lines = load_speichern()
             score_liste = umwandeln_txt(lines)
             score_liste[spieler] = score
+            speichern.clear()
 
             for user,score in score_liste.items():
                 speichern.append(user + "=" + str(score) + "\n")
