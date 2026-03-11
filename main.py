@@ -70,7 +70,13 @@ def abgleich(zufallzahl):
 
         if spielerzahl == zufallzahl:
             score += 1
-            speichern.append(spieler + " = " + str(score) + "\n")
+            lines = load_speichern()
+            score_liste = umwandeln_txt(lines)
+            score_liste[spieler] = score
+
+            for user,score in score_liste.items():
+                speichern.append(user + "=" + str(score) + "\n")
+
             print("richtig score :", score)
             weiter = input("Weiter spielen (y/n):")
 
