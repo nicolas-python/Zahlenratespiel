@@ -82,6 +82,7 @@ def abgleich(zufallzahl):
             weiter = input("Weiter spielen (y/n):")
 
             if weiter == "y":
+                zufallzahl = zahlgenerator()
                 continue
 
             elif weiter == "n":
